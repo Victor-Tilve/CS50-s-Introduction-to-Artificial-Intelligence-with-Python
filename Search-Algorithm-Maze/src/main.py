@@ -124,6 +124,9 @@ class Maze():
                 continue
         
         return result
+    def solve(self):
+        """Finds a solution to maze, if one exist."""
+        
         
         
         
