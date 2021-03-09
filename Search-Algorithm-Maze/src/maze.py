@@ -113,7 +113,7 @@ class Maze():
                     actions.append(node.action)
                     cells.append(node.state)
                     node = node.parent
-                actions.reverse()
+                actions.reverse() #TODO What is this mean?
                 cells.reverse()
                 self.solution = (actions, cells)
                 return

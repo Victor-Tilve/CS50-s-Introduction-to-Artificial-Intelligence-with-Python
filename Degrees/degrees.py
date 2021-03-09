@@ -61,14 +61,21 @@ def main():
     print("Loading data...")
     load_data(directory)
     print("Data loaded.")
+    print()
+    print(names)
+    print()
+    print(people)
+    print()
+    print(movies)
+    print()
 
-    source = person_id_for_name(input("Name: "))
+    """source = person_id_for_name(input("Name: "))
     if source is None:
         sys.exit("Person not found.")
     target = person_id_for_name(input("Name: "))
     if target is None:
         sys.exit("Person not found.")
-
+    #Develop the function
     path = shortest_path(source, target)
 
     if path is None:
@@ -81,7 +88,7 @@ def main():
             person1 = people[path[i][1]]["name"]
             person2 = people[path[i + 1][1]]["name"]
             movie = movies[path[i + 1][0]]["title"]
-            print(f"{i + 1}: {person1} and {person2} starred in {movie}")
+            print(f"{i + 1}: {person1} and {person2} starred in {movie}")"""
 
 
 def shortest_path(source, target):
@@ -91,9 +98,54 @@ def shortest_path(source, target):
 
     If no possible path, returns None.
     """
+        """Finds a solution to maze, if one exists."""
+    ## TODO: Need to adapt this code to the current problem
+    #--------------------------------------------------------------#
+    # Keep track of number of states explored
+    self.num_explored = 0
 
-    # TODO
-    raise NotImplementedError
+    # Initialize frontier to just the starting position
+    ## TODO: Define Self.start
+    start = Node(state=self.start, parent=None, action=None)
+    frontier = QueueFrontier()
+    frontier.add(start)
+
+    # Initialize an empty explored set
+    self.explored = set()
+
+    # Keep looping until solution found
+    while True:
+
+        # If nothing left in frontier, then no path
+        if frontier.empty():
+            raise Exception("no solution")
+
+        # Choose a node from the frontier
+        node = frontier.remove()
+        self.num_explored += 1
+
+        # If node is the goal, then we have a solution
+        if node.state == self.goal:
+            actions = []
+            cells = []
+            while node.parent is not None:
+                actions.append(node.action)
+                cells.append(node.state)
+                node = node.parent
+            actions.reverse() #TODO What is this mean?
+            cells.reverse()
+            self.solution = (actions, cells)
+            return
+
+        # Mark node as explored
+        self.explored.add(node.state)
+
+        # Add neighbors to frontier
+        for action, state in self.neighbors(node.state):
+            if not frontier.contains_state(state) and state not in self.explored:
+                child = Node(state=state, parent=node, action=action)
+                frontier.add(child)
+#--------------------------------------------------------------#
 
 
 def person_id_for_name(name):
