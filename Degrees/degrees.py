@@ -88,7 +88,7 @@ def shortest_path(source, target):
     # Initialize frontier to just the starting position
     #state is a string literal
     start = Node(state=source, parent=None, action=None)
-    frontier = QueueFrontier()
+    frontier = StackFrontier()
     frontier.add(start)
 
     # Initialize an empty explored set
@@ -108,6 +108,7 @@ def shortest_path(source, target):
 
         # If node is the goal, then we have a solution
         if node.state == goal:
+            print(f"States Explored: {num_explored}")
             return _shortest_path(node)
 
         # Mark node as explored
@@ -116,11 +117,11 @@ def shortest_path(source, target):
         for movie_id, person_id in neighbors_for_person(node.state):
             if not frontier.contains_state(person_id) and person_id not in explored:
                 child = Node(state=person_id, parent=node, action=movie_id)
-                if child == goal:
-                    print("chlid == goal")
+                if child.state == goal:
+                    print(f"States Explored: {num_explored}")
                     return _shortest_path(child)
                 frontier.add(child)
-#--------------------------------------------------------------#
+
 
 
 def person_id_for_name(name):
@@ -171,6 +172,7 @@ def main():
     print("Loading data...")
     load_data(directory)
     print("Data loaded.")
+
     #reading names
     """source = person_id_for_name(input("Name: "))
     if source is None:
@@ -181,40 +183,13 @@ def main():
     """
 
     source = person_id_for_name("Kevin Bacon")
-    target = person_id_for_name("Bill Paxton")
+    target = person_id_for_name("Cary Elwes")
 
     path = shortest_path(source, target)
     print()
     print(path)
 
 
-    if path is None:
-        print("Not connected.")
-    else:
-        degrees = len(path)
-        print(f"{degrees} degrees of separation.")
-        path = [(None, source)] + path
-        for i in range(degrees):
-            person1 = people[path[i][1]]["name"]
-            person2 = people[path[i + 1][1]]["name"]
-            movie = movies[path[i + 1][0]]["title"]
-            print(f"{i + 1}: {person1} and {person2} starred in {movie}")
-
-
-def Testing_person_id_for_name():
-    if len(sys.argv) > 2:
-        sys.exit("Usage: python degrees.py [directory]")
-    directory = sys.argv[1] if len(sys.argv) == 2 else "small"
-    print("Loading data...")
-    load_data(directory)
-    print("Data loaded.")
-
-    source = person_id_for_name("Kevin Bacon")
-    target = person_id_for_name("Bill Paxton")
-
-    path = shortest_path(source, target)
-
-    print("\nthe path is:")
     if path is None:
         print("Not connected.")
     else:
