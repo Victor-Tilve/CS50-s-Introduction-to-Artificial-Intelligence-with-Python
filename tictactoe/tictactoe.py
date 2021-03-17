@@ -17,27 +17,52 @@ def initial_state():
             [EMPTY, EMPTY, EMPTY],
             [EMPTY, EMPTY, EMPTY]]
 
-
+## NOTE: this function is done
 def player(board):
     """
     Returns player who has the next turn on a board.
     """
+    x_counter = 0
+    o_counter = 0
 
-    raise NotImplementedError
+    for row in range(3):
+        for column in range(3):
+            if board[row][column] == "X":
+                x_counter += 1
+            elif board[row][column] == "O":
+                o_counter += 1
+    # print(f"x_counter: {x_counter}")
+    # print(f"o_counter: {o_counter}")
+    if x_counter == 0:
+        return X
 
+    if x_counter > o_counter:
+        return O
 
+    elif x_counter == o_counter:
+        return X
+
+## NOTE: this function is done
 def actions(board):
     """
     Returns set of all possible actions (i, j) available on the board.
     """
-    raise NotImplementedError
+    possible_states = set()
 
+    for row in range(3):
+        for column in range(3):
+            if board[row][column] == EMPTY:
+                possible_states.add((row,column))
+    return possible_states
 
 def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
-    raise NotImplementedError
+    player_turn = player(board)
+    row, column = action
+    board[row][column] = player_turn
+    return board
 
 
 def winner(board):
