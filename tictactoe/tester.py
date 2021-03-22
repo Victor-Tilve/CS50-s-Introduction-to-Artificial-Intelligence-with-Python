@@ -4,13 +4,13 @@ EMPTY = None
 
 board = ttt.initial_state()
 
-board = [[EMPTY, "X", EMPTY],
-        [EMPTY, EMPTY, EMPTY],
-        [EMPTY, EMPTY, EMPTY]]
+board = [["O", "X", "X"],
+        ["O", "X", EMPTY],
+        [EMPTY, "X", EMPTY]]
 
 
-board = ttt.result(board, (0,0))
-# print(board)
+# board = ttt.result(board, (2,2))
+print(board)
 
 
 def main():
@@ -26,7 +26,4 @@ def increment(x):
     print(f"  Final address of x: {id(x)}")
 
 x = 2
-print(id(x))
-
-x = 5
-print(id(x))
+print(ttt.utility(board))
