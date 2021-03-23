@@ -1,14 +1,16 @@
 import tictactoe as ttt
-
+import sys
 EMPTY = None
+sys.setrecursionlimit(1000000)
+# board = ttt.initial_state()
 
-board = ttt.initial_state()
-
-board = [["O", "X", "X"],
+'''board = [["O", "X", EMPTY],
         ["O", "X", EMPTY],
-        [EMPTY, "X", EMPTY]]
+        ["X","O", EMPTY]]'''
 
-
+board = [[EMPTY, EMPTY, EMPTY],
+        [EMPTY, EMPTY, EMPTY],
+        [EMPTY, EMPTY, EMPTY]]
 # board = ttt.result(board, (2,2))
 print(board)
 
@@ -25,5 +27,11 @@ def increment(x):
     x += 1
     print(f"  Final address of x: {id(x)}")
 
-x = 2
-print(ttt.utility(board))
+# x = ttt.max_value(board)
+# print(ttt.winner(board))
+# print(ttt.terminal(board))
+# print(board[0][0])
+# print(ttt.player(board))
+# limit = sys.getrecursionlimit()
+# print(ttt.player(board))
+print(ttt.minimax(board))

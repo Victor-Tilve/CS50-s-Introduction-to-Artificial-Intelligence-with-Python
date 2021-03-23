@@ -82,9 +82,9 @@ def winner(board):
     #Check horizontal
     if board[0][0] != None:
         if board[0][0] == board[0][1] and board[0][0] == board[0][2]:
-            print(board[0][0])
-            print(board[0][1])
-            print(board[0][2])
+            # print(board[0][0])
+            # print(board[0][1])
+            # print(board[0][2])
             # print("Checking horizontal 1")
             return board[0][0]
     if board[1][0] != None:
@@ -141,29 +141,77 @@ def utility(board):
 def minimax(board):
     """
     Returns the optimal action for the current player on the board.
-    The move returned should be the optimal action (i, j) that is one of the allowable actions on the board. If multiple moves are equally optimal, any of those moves is acceptable.
+    The move returned should be the optimal action (i, j) that is one of the allowable actions on the board.
+    If multiple moves are equally optimal, any of those moves is acceptable.
     """
+    ## COMBAK: imma bout to implemnt something i'm not source
     if terminal(board):
         return None
     else:
+        # print("The game is not over")
+        o_values = {}
+        o_values[1] = []
+        o_values[0] = []
+        o_values[-1] = []
+
         if player(board) == X:
-            max_value()
+            # print(f"{X} Turn")
+            for action in actions(board):
+                value = max_value(result(board, action))
+                if value == 1:
+                    o_values[1].append(action)
+                elif value == 0:
+                    o_values[0].append(action)
+                else:
+                    o_values[-1].append(action)
+            # print(o_values)
+            if len(o_values[1]) > 0:
+                    return o_values[1][0]
+            elif len(o_values[0]) > 0:
+                return o_values[0][0]
+            else:
+                return o_values[-1][0]
+
+        elif player(board) == O:
+            # print(f"{O} Turn")
+            for action in actions(board):
+                value = max_value(result(board, action))
+                if value == 1:
+                    o_values[1].append(action)
+                elif value == 0:
+                    o_values[0].append(action)
+                else:
+                    o_values[-1].append(action)
+            # print(o_values)
+
+            if len(o_values[-1]) > 0:
+                    return o_values[-1][0]
+            elif len(o_values[0]) > 0:
+                return o_values[0][0]
+            else:
+                return o_values[1][0]
+
     # raise NotImplementedError
 
 ## COMBAK: CHeck how to implement these functions
 def max_value(board):
+
     if terminal(board):
         return utility(board)
-    v = (float(-inf),float(-inf))
-    o_action = None
+    v = float('-inf')
     for action in actions(board):
         v = max(v, min_value(result(board, action)))
+        if v == 1:
+            return v
     return v
+
 
 def min_value(board):
     if terminal(board):
         return utility(board)
-    v = float(inf)
+    v = float('inf')
     for action in actions(board):
         v = min(v, max_value(result(board, action)))
+        if v == -1:
+            return v
     return v

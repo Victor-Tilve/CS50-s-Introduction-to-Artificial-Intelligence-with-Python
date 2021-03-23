@@ -1,7 +1,7 @@
 import pygame
 import sys
 import time
-
+sys.setrecursionlimit(3000)
 import tictactoe as ttt
 
 pygame.init()
