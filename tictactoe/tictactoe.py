@@ -8,6 +8,7 @@ X = "X"
 O = "O"
 EMPTY = None
 
+max_Depth = 0
 
 def initial_state():
     """
@@ -195,11 +196,14 @@ def minimax(board):
 
 ## COMBAK: CHeck how to implement these functions
 def max_value(board):
-
+    global max_Depth
     if terminal(board):
         return utility(board)
+    if max_Depth > 8:
+        return 1
     v = float('-inf')
     for action in actions(board):
+        max_Depth += 1
         v = max(v, min_value(result(board, action)))
         if v == 1:
             return v
@@ -207,10 +211,15 @@ def max_value(board):
 
 
 def min_value(board):
+    global max_Depth
+
     if terminal(board):
         return utility(board)
+    if max_Depth > 8:
+        return -1
     v = float('inf')
     for action in actions(board):
+        max_Depth += 1
         v = min(v, max_value(result(board, action)))
         if v == -1:
             return v

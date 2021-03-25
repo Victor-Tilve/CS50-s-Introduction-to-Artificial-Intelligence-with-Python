@@ -33,5 +33,5 @@ def increment(x):
 # print(board[0][0])
 # print(ttt.player(board))
 # limit = sys.getrecursionlimit()
-# print(ttt.player(board))
+print(ttt.player(board))
 print(ttt.minimax(board))
