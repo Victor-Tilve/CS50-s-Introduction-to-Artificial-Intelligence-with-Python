@@ -51,45 +51,23 @@ def load_data(directory):
             except KeyError:
                 pass
 
+def _shortest_path(node):
+    _movie_id = []
+    _person_id = []
+    solution = []
 
-def main():
-    if len(sys.argv) > 2:
-        sys.exit("Usage: python degrees.py [directory]")
-    directory = sys.argv[1] if len(sys.argv) == 2 else "large"
-    ## TODO: Define the goal and the start point
-    # Load data from files into memory
-    print("Loading data...")
-    load_data(directory)
-    print("Data loaded.")
-    print()
-    print(names)
-    print()
-    print(people)
-    print()
-    print(movies)
-    print()
+    while node.parent is not None:
+        _person_id.append(node.state)
+        _movie_id.append(node.action)
+        node = node.parent
 
-    """source = person_id_for_name(input("Name: "))
-    if source is None:
-        sys.exit("Person not found.")
-    target = person_id_for_name(input("Name: "))
-    if target is None:
-        sys.exit("Person not found.")
-    #Develop the function
-    path = shortest_path(source, target)
+    _movie_id.reverse()
+    _person_id.reverse()
 
-    if path is None:
-        print("Not connected.")
-    else:
-        degrees = len(path)
-        print(f"{degrees} degrees of separation.")
-        path = [(None, source)] + path
-        for i in range(degrees):
-            person1 = people[path[i][1]]["name"]
-            person2 = people[path[i + 1][1]]["name"]
-            movie = movies[path[i + 1][0]]["title"]
-            print(f"{i + 1}: {person1} and {person2} starred in {movie}")"""
+    for i in range(len(_movie_id)):
+        solution.append((_movie_id[i],_person_id[i]))
 
+    return solution
 
 def shortest_path(source, target):
     """
@@ -97,24 +75,28 @@ def shortest_path(source, target):
     that connect the source to the target.
 
     If no possible path, returns None.
+    * Source  is a string literal
+    * target  is a string literal
     """
-        """Finds a solution to maze, if one exists."""
+
     ## TODO: Need to adapt this code to the current problem
     #--------------------------------------------------------------#
     # Keep track of number of states explored
-    self.num_explored = 0
-
+    num_explored = 0
+    #goal is a string literal
+    goal = target
     # Initialize frontier to just the starting position
-    ## TODO: Define Self.start
-    start = Node(state=self.start, parent=None, action=None)
-    frontier = QueueFrontier()
+    #state is a string literal
+    start = Node(state=source, parent=None, action=None)
+    frontier = StackFrontier()
     frontier.add(start)
 
     # Initialize an empty explored set
-    self.explored = set()
+    explored = set()
 
     # Keep looping until solution found
     while True:
+        # print(type(node.state))
 
         # If nothing left in frontier, then no path
         if frontier.empty():
@@ -122,30 +104,24 @@ def shortest_path(source, target):
 
         # Choose a node from the frontier
         node = frontier.remove()
-        self.num_explored += 1
+        num_explored += 1
 
         # If node is the goal, then we have a solution
-        if node.state == self.goal:
-            actions = []
-            cells = []
-            while node.parent is not None:
-                actions.append(node.action)
-                cells.append(node.state)
-                node = node.parent
-            actions.reverse() #TODO What is this mean?
-            cells.reverse()
-            self.solution = (actions, cells)
-            return
+        if node.state == goal:
+            print(f"States Explored: {num_explored}")
+            return _shortest_path(node)
 
         # Mark node as explored
-        self.explored.add(node.state)
+        explored.add(node.state)
 
-        # Add neighbors to frontier
-        for action, state in self.neighbors(node.state):
-            if not frontier.contains_state(state) and state not in self.explored:
-                child = Node(state=state, parent=node, action=action)
+        for movie_id, person_id in neighbors_for_person(node.state):
+            if not frontier.contains_state(person_id) and person_id not in explored:
+                child = Node(state=person_id, parent=node, action=movie_id)
+                if child.state == goal:
+                    print(f"States Explored: {num_explored}")
+                    return _shortest_path(child)
                 frontier.add(child)
-#--------------------------------------------------------------#
+
 
 
 def person_id_for_name(name):
@@ -173,12 +149,13 @@ def person_id_for_name(name):
     else:
         return person_ids[0]
 
-
+### FIXME: The parameter gotta be str
 def neighbors_for_person(person_id):
     """
     Returns (movie_id, person_id) pairs for people
     who starred with a given person.
     """
+    ### NOTE: person_id must be string
     movie_ids = people[person_id]["movies"]
     neighbors = set()
     for movie_id in movie_ids:
@@ -186,6 +163,44 @@ def neighbors_for_person(person_id):
             neighbors.add((movie_id, person_id))
     return neighbors
 
+def main():
+    if len(sys.argv) > 2:
+        sys.exit("Usage: python degrees.py [directory]")
+    directory = sys.argv[1] if len(sys.argv) == 2 else "small"
+    ## TODO: Define the goal and the start point
+    # Load data from files into memory
+    print("Loading data...")
+    load_data(directory)
+    print("Data loaded.")
+
+    #reading names
+    """source = person_id_for_name(input("Name: "))
+    if source is None:
+        sys.exit("Person not found.")
+    target = person_id_for_name(input("Name: "))
+    if target is None:
+        sys.exit("Person not found.")
+    """
+
+    source = person_id_for_name("Kevin Bacon")
+    target = person_id_for_name("Cary Elwes")
+
+    path = shortest_path(source, target)
+    print()
+    print(path)
+
+
+    if path is None:
+        print("Not connected.")
+    else:
+        degrees = len(path)
+        print(f"{degrees} degrees of separation.")
+        path = [(None, source)] + path
+        for i in range(degrees):
+            person1 = people[path[i][1]]["name"]
+            person2 = people[path[i + 1][1]]["name"]
+            movie = movies[path[i + 1][0]]["title"]
+            print(f"{i + 1}: {person1} and {person2} starred in {movie}")
 
 if __name__ == "__main__":
     main()

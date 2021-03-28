@@ -3,9 +3,9 @@ Created on 7/03/2021
 
 @author: VATS
 '''
-import stackFrontier
+from stackFrontier import StackFrontier
 
-class QueueFrontier(stackFrontier):
+class QueueFrontier(StackFrontier):
 
     def remove(self):
         if self.empty():
