@@ -8,10 +8,8 @@ X = "X"
 O = "O"
 EMPTY = None
 
-<<<<<<< HEAD
-=======
 max_Depth = 0
->>>>>>> Solution
+
 
 def initial_state():
     """
@@ -21,20 +19,13 @@ def initial_state():
             [EMPTY, EMPTY, EMPTY],
             [EMPTY, EMPTY, EMPTY]]
 
-<<<<<<< HEAD
 
-=======
 ## NOTE: this function is done
->>>>>>> Solution
+
 def player(board):
     """
     Returns player who has the next turn on a board.
     """
-<<<<<<< HEAD
-    raise NotImplementedError
-
-
-=======
     x_counter = 0
     o_counter = 0
 
@@ -56,16 +47,10 @@ def player(board):
         return X
 
 ## NOTE: this function is done
->>>>>>> Solution
 def actions(board):
     """
     Returns set of all possible actions (i, j) available on the board.
     """
-<<<<<<< HEAD
-    raise NotImplementedError
-
-
-=======
     possible_states = set()
 
     for row in range(3):
@@ -74,31 +59,21 @@ def actions(board):
                 possible_states.add((row,column))
     return possible_states
 ## NOTE: this function is done
->>>>>>> Solution
+
 def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
-<<<<<<< HEAD
-    raise NotImplementedError
-
-
-=======
     player_turn = player(board)
     row, column = action
     board[row][column] = player_turn
     return board
 ## FIXME: would be interting to implement the stack iteration
->>>>>>> Solution
+
 def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
-<<<<<<< HEAD
-    raise NotImplementedError
-
-
-=======
     #Check mean diagonal
     if board[0][0] != None:
         if board[0][0] == board[1][1] and board[0][0] == board[2][2]:
@@ -142,15 +117,10 @@ def winner(board):
 
     return None
 ## FIXME: check is there is a better way
->>>>>>> Solution
 def terminal(board):
     """
     Returns True if game is over, False otherwise.
     """
-<<<<<<< HEAD
-    raise NotImplementedError
-
-=======
     if winner(board) == None:
         for row in range(len(board)):
             if None in board[row]:
@@ -158,15 +128,12 @@ def terminal(board):
     else:
         return True
     # raise NotImplementedError
->>>>>>> Solution
+
 
 def utility(board):
     """
     Returns 1 if X has won the game, -1 if O has won, 0 otherwise.
     """
-<<<<<<< HEAD
-    raise NotImplementedError
-=======
     if winner(board) == X:
         return 1
     elif winner(board) == O:
@@ -176,16 +143,9 @@ def utility(board):
 
 
     # raise NotImplementedError
->>>>>>> Solution
-
-
 def minimax(board):
     """
     Returns the optimal action for the current player on the board.
-<<<<<<< HEAD
-    """
-    raise NotImplementedError
-=======
     The move returned should be the optimal action (i, j) that is one of the allowable actions on the board.
     If multiple moves are equally optimal, any of those moves is acceptable.
     """
@@ -268,4 +228,3 @@ def min_value(board):
         if v == -1:
             return v
     return v
->>>>>>> Solution
