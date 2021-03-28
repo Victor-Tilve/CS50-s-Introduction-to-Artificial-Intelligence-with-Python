@@ -1,0 +1,32 @@
+INSTUPmaze
+D:\xx - Github\CS50-s-Introduction-to-Artificial-Intelligence-with-Python\Search-Algorithm-Maze\src\maze.py
+INFOS:&&1|1|2|0|3|5|7&&2|4|2|1|3|6|9&&3|5|2|6|3|7|9&&2|7|2|1|3|9|9&&2|8|2|1|3|12|9&&2|9|2|1|3|15|9&&2|10|2|1|3|18|9&&3|5|2|11|3|23|13&&1|12|2|0|3|27|7&&2|10|2|12|3|29|9&&3|5|2|13|3|34|13&&1|14|2|0|3|37|7&&2|4|2|14|3|39|9&&3|15|2|16|3|53|9&&3|17|2|16|3|54|9&&3|18|2|16|3|57|9&&3|19|2|16|3|63|25&&3|20|2|16|3|66|25&&3|21|2|16|3|76|9&&2|22|2|14|3|79|9&&2|23|2|14|3|98|9&&2|24|2|14|3|114|9&&3|25|2|26|3|118|9&&3|27|2|26|3|126|9&&3|21|2|26|3|149|17&&2|28|2|14|3|162|9&&3|29|2|0|3|216|1
+Maze.solve=26
+num_explored=25
+D:\xx - Github\CS50-s-Introduction-to-Artificial-Intelligence-with-Python\Search-Algorithm-Maze\src\maze.py=3
+output_image=28
+maze=2
+remove=10
+StackFrontier.remove=11
+empty=9
+walls=18
+solution=21
+neighbors=23
+Maze.__init__=16
+StackFrontier.__init__=6
+height=15
+add=7
+frontier=5
+goal=20
+start=19
+QueueFrontier=12
+m=29
+print=22
+contains_state=8
+explored=27
+solve=24
+width=17
+Maze=14
+StackFrontier=1
+__init__=4
+QueueFrontier.remove=13

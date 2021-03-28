@@ -1,0 +1,5 @@
+MODULES_MANAGER_V3
+maze|D:\xx - Github\CS50-s-Introduction-to-Artificial-Intelligence-with-Python\Search-Algorithm-Maze\src\maze.py
+node|D:\xx - Github\CS50-s-Introduction-to-Artificial-Intelligence-with-Python\Search-Algorithm-Maze\src\node.py
+queueFrontier|D:\xx - Github\CS50-s-Introduction-to-Artificial-Intelligence-with-Python\Search-Algorithm-Maze\src\queueFrontier.py
+stackFrontier|D:\xx - Github\CS50-s-Introduction-to-Artificial-Intelligence-with-Python\Search-Algorithm-Maze\src\stackFrontier.py

@@ -1,0 +1,50 @@
+-- VERSION_5
+-- START DISKCACHE_3
+D:\xx - Github\CS50-s-Introduction-to-Artificial-Intelligence-with-Python\.metadata\.plugins\org.eclipse.core.resources\.projects\Search-Algorithm-Maze\com.python.pydev.analysis\v2_indexcache
+maze|1615155927558914500|D:\xx - Github\CS50-s-Introduction-to-Artificial-Intelligence-with-Python\Search-Algorithm-Maze\src\maze.py
+-- END DISKCACHE
+-- START DICTIONARY
+12
+7=Maze.solve
+6=Node.__init__
+3=Node
+11=Maze.__init__
+1=D:\xx - Github\CS50-s-Introduction-to-Artificial-Intelligence-with-Python\Search-Algorithm-Maze\src\maze.py
+12=QueueFrontier
+5=Maze
+2=maze
+4=StackFrontier
+10=QueueFrontier.remove
+8=StackFrontier.__init__
+9=StackFrontier.remove
+-- END DICTIONARY
+-- START TREE 1
+5
+m|1|m!1^221#1*19@
+maz|1|Maze!1^42#7*17@
+nod|1|Node!1^3#7*17@
+que|1|QueueFrontier!1^32#7*17@
+sta|1|StackFrontier!1^10#7*17@
+-- END TREE
+-- START TREE 2
+19
+__i|3|__init__!3&1^4#9*18@__init__!4&1^11#9*18@__init__!5&1^44#9*18@
+act|1|action!6&1^7#9*19@
+add|1|add!4&1^14#9*18@
+con|1|contains_state!4&1^17#9*18@
+emp|1|empty!4&1^20#9*18@
+exp|1|explored!7&1^131#9*19@
+fro|3|frontier!8&1^12#9*19@frontier!9&1^28#13*19@frontier!10&1^39#13*19@
+goa|1|goal!11&1^71#25*19@
+hei|1|height!11&1^58#9*19@
+nei|1|neighbors!5&1^103#9*18@
+num|1|num_explored!7&1^123#9*19@
+out|1|output_image!5&1^167#9*18@
+par|1|parent!6&1^6#9*19@
+pri|1|print!5&1^84#9*18@
+rem|2|remove!4&1^23#9*18@remove!12&1^34#9*18@
+sol|3|solve!5&1^119#9*18@solution!11&1^81#9*19@solution!7&1^154#17*19@
+sta|2|state!6&1^5#9*19@start!11&1^68#25*19@
+wal|1|walls!11&1^62#9*19@
+wid|1|width!11&1^59#9*19@
+-- END TREE
