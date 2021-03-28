@@ -1,7 +1,8 @@
 import sys
 from node import Node
 from stackFrontier import StackFrontier
-#from queueFrontier import QueueFrontier
+from queueFrontier import QueueFrontier
+from PIL import Image, ImageDraw
 
 class Maze():
 
@@ -113,7 +114,7 @@ class Maze():
                     actions.append(node.action)
                     cells.append(node.state)
                     node = node.parent
-                actions.reverse() #TODO What is this mean?
+                actions.reverse() 
                 cells.reverse()
                 self.solution = (actions, cells)
                 return
@@ -129,7 +130,7 @@ class Maze():
 
 
     def output_image(self, filename, show_solution=True, show_explored=False):
-        from PIL import Image, ImageDraw
+        # from PIL import Image, ImageDraw
         cell_size = 50
         cell_border = 2
 

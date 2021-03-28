@@ -1,7 +1,11 @@
 import pygame
 import sys
 import time
+<<<<<<< HEAD
 
+=======
+sys.setrecursionlimit(3000)
+>>>>>>> Solution
 import tictactoe as ttt
 
 pygame.init()
@@ -110,9 +114,18 @@ while True:
 
         # Check for AI move
         if user != player and not game_over:
+<<<<<<< HEAD
             if ai_turn:
                 time.sleep(0.5)
                 move = ttt.minimax(board)
+=======
+            print(f'user: {user}')
+            print(f'player: {player}')
+            if ai_turn:
+                time.sleep(0.5)
+                move = ttt.minimax(board)
+                print(f"AI turn: {move}")
+>>>>>>> Solution
                 board = ttt.result(board, move)
                 ai_turn = False
             else:
